@@ -5,6 +5,15 @@
 > - 커밋 이력은 원본 저장소 `main`(운영 릴리스 소스)을 그대로 옮겼고, Python AI·사진 서비스는 `pawbridge-python/` 폴더에 원본 이력과 함께 합쳤습니다. 운영 전환 직전에 최종본을 한 번 더 반영하고 읽기 전용(Archived)으로 전환합니다.
 > - 이 저장소는 포트폴리오와, 이후 MSA로 다시 나눌 때의 참고용입니다. 운영 설정·비밀값은 포함하지 않습니다.
 
+### 시기별 보존 저장소
+
+| 시기 | 저장소 |
+| --- | --- |
+| AWS EC2 5대 Docker 운영 | [pawbridge-backend](https://github.com/pawbridge/pawbridge-backend) |
+| Kubernetes(로컬 VM) 운영, 맥 이관 전 (2026-10-15 기준) | `pawbridge-backend-k8s-archive`, `pawbridge-infra-k8s-archive` (비공개 보관) |
+| **맥 Docker Compose MSA 운영 최종본 (2026-10-22)** | **이 저장소** |
+| 모듈형 모놀리스 (이후 개발) | [pawbridge-backend-k8s](https://github.com/pawbridge/pawbridge-backend-k8s) |
+
 ### 보존 시점의 운영 구성 (2026-10-22, Mac mini Docker Compose)
 
 | 서비스 | 운영 이미지 빌드 커밋 |
