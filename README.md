@@ -2,7 +2,7 @@
 
 > 이 저장소는 PawBridge 백엔드의 **마이크로서비스(MSA) 운영 버전**을 보존합니다. 백엔드는 Java 21 모듈형 모놀리스로 전환 중이며, 전환 후 개발은 [pawbridge-backend-k8s](https://github.com/pawbridge/pawbridge-backend-k8s)에서 이어집니다.
 >
-> - 커밋 이력은 원본 저장소 `main`(운영 릴리스 소스)을 그대로 옮겼습니다. 운영 전환 직전에 최종본을 한 번 더 반영하고 읽기 전용(Archived)으로 전환합니다.
+> - 커밋 이력은 원본 저장소 `main`(운영 릴리스 소스)을 그대로 옮겼고, Python AI·사진 서비스는 `pawbridge-python/` 폴더에 원본 이력과 함께 합쳤습니다. 운영 전환 직전에 최종본을 한 번 더 반영하고 읽기 전용(Archived)으로 전환합니다.
 > - 이 저장소는 포트폴리오와, 이후 MSA로 다시 나눌 때의 참고용입니다. 운영 설정·비밀값은 포함하지 않습니다.
 
 ### 보존 시점의 운영 구성 (2026-10-22, Mac mini Docker Compose)
@@ -11,7 +11,8 @@
 | --- | --- |
 | api-gateway, user-service, community-service, store-service, payment-service | [`501d513`](https://github.com/pawbridge/pawbridge-msa/commit/501d513b76a7340c6a03fcb34ebb55f0d1984650) |
 | animal-service | [`3909f4f`](https://github.com/pawbridge/pawbridge-msa/commit/3909f4faab0f1e954922697aca587c2992c0328f) |
-| photo, python-api, native AI 연동 | 별도 저장소 |
+| photo, python-api | [`pawbridge-python/`](pawbridge-python) — 원본 [pawbridge-python](https://github.com/pawbridge/pawbridge-python) `cf67d54`를 커밋 이력과 함께 포함 |
+| native-ai-relay, native-db-gallery-bridge | 코드 없음 (nginx 프록시 이미지 + 운영 설정, 비밀값 포함 가능성으로 미포함) |
 
 서비스 간 통신은 각 서비스의 Transactional Outbox → Debezium CDC → Kafka 소비자(찜 수 반영·찜 보상·결제→주문)로 이루어졌고, 외부 진입은 Spring Cloud Gateway가 JWT 검증과 경로 분배를 맡았습니다. 데이터는 단일 PostgreSQL 17의 서비스별 스키마로 나뉩니다.
 
